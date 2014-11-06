@@ -1,0 +1,16 @@
+{
+    "name": "cutephp/route",
+    "description": "a simple route",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Xuan Liu",
+            "email": "xuancoder@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CutePHP\\Route\\": "src"
+        }
+    }
+}
