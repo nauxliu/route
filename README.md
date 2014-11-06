@@ -1,4 +1,4 @@
-##安装
+#安装
 在你的composer.json中添加
 ```
 "require": {
