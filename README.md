@@ -1,5 +1,12 @@
-#使用
+##安装
+在你的composer.json中添加
+```
+"require": {
+    "cutephp/route": "dev-master"
+},
+```
 
+#使用
 
 ####添加基本路由
 调用和HTTP方法同名的函数名来添加路由，第一个参数为接受的URI，第二个参数为任意类型。匹配成功后可通过`getStorage()`方法原样取出。
@@ -80,5 +87,3 @@ $router->get('/users/:id?',function(){
 ```
 这时`/users`或`/users/1`都可匹配到此路由。如果匹配`/users/1`,`getParams()`还可获得`id`对应`1`的数组。
 
-##安装
-修改你的composer.json
