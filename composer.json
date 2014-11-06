@@ -1,6 +1,7 @@
 {
     "name": "cutephp/route",
     "description": "a simple route",
+    "type": "library",
     "license": "mit",
     "authors": [
         {
