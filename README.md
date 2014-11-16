@@ -1,6 +1,6 @@
 #安装
 在你的composer.json中添加
-```
+```json
 "require": {
     "cutephp/route": "dev-master"
 },
@@ -11,7 +11,7 @@
 ####添加基本路由
 调用和HTTP方法同名的函数名来添加路由，第一个参数为接受的URI，第二个参数为任意类型。匹配成功后可通过`getStorage()`方法原样取出。
 
-```
+```php
 use CutePHP\Route\Router;
 
 $router = new Router;
@@ -32,7 +32,7 @@ $router->patch('/test', 'test');
 >注意：GET路由会同意匹配HEAD请求。
 
 ####获得匹配的路由
-```
+```php
 use CutePHP\Route\Router;
 
 $router = new Router;
@@ -53,7 +53,7 @@ echo $route->getStorage();
 ####添加同时支持多种HTTP方法的路由
 通过调用`via`方法传入多个http方法名
 
-```
+```php
 $router->add('/test',function(){
     return 123;
 })->via('get','post');
@@ -61,7 +61,7 @@ $router->add('/test',function(){
 ####添加可以接受参数的路由
 路由参数节点使用`:`做前缀标识
 
-```
+```php
 $router->get('/test/:id',function(){
     return 123;
 });
@@ -80,7 +80,7 @@ array(1) {
 ```
 ####添加可选参数的路由
 
-```
+```php
 $router->get('/users/:id?',function(){
     return 123;
 });
