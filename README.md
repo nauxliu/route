@@ -32,6 +32,7 @@ $router->patch('/test', 'test');
 >注意：GET路由会同意匹配HEAD请求。
 
 ####获得匹配的路由
+
 ```php
 use CutePHP\Route\Router;
 
@@ -58,6 +59,16 @@ $router->add('/test',function(){
     return 123;
 })->via('get','post');
 ```
+####有名字的路由
+```php
+$router->get('/test', 123, 'MyName');
+$res = $route->name('MyName');
+
+$res->getUri(); // '/test'
+$res->getStorage(); // 123
+$res->getMethods(); // array( 0 => 'GET')
+```
+
 ####添加可以接受参数的路由
 路由参数节点使用`:`做前缀标识
 

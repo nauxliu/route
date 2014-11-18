@@ -45,7 +45,7 @@ class Route
         $this->pattern = $pattern;
         $this->storage = $storage;
         if (!is_null($methods)) {
-            $this->via($methods);
+            $this->methods = (array)$methods;
         }
     }
 
@@ -54,6 +54,9 @@ class Route
      */
     public function via(){
         $methods = (array)func_get_args();
+        if(count($methods) === 1 and is_array($methods[0])){
+            $methods = $methods[0];
+        }
         $this->methods = array_map('strtoupper',$methods);
     }
 
@@ -67,6 +70,7 @@ class Route
     }
 
     /**
+     * 返回Route RUI中匹配得到的参数数组
      * @return array
      */
     public function getParams()
@@ -75,6 +79,7 @@ class Route
     }
 
     /**
+     * 获取存入本Route的信息
      * @return array
      */
     public function getStorage()
@@ -83,6 +88,7 @@ class Route
     }
 
     /**
+     * 获取本路由的允许匹配的URI
      * @return String
      */
     public function getUri()
@@ -91,6 +97,7 @@ class Route
     }
 
     /**
+     * 获取本路由允许的Method方法
      * @return array
      */
     public function getMethods()

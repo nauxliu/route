@@ -71,12 +71,53 @@ class RouteTest extends PHPUnit_Framework_TestCase{
     public function testStorage(){
         $route = new \CutePHP\Route\Router();
 
-        $route->get('/test',function(){
+        $route->get('/test', function(){
             return '123';
         });
 
         $res = $route->match('/test','get');
         $callback = $res->getStorage();
         $this->assertEquals($callback(), '123');
+    }
+
+    /**
+     * 测试Route其他一些getXXX方法
+     */
+    public function testGetMore(){
+        $uri = '/test';
+        $methods = [
+            'GET',
+            'POST',
+            'DELETE'
+        ];
+        $route = new \CutePHP\Route\Router();
+
+        $route->get('/test', function(){
+            return '123';
+        })->via($methods);
+
+
+        $res = $route->match($uri, 'get');
+
+        //测试getUri()
+        $this->assertEquals($uri, $res->getUri());
+        //测试getMethods()
+        $this->assertEquals($methods, $res->getMethods());
+
+    }
+
+    /**
+     * 测试名字路由
+     */
+    public function testNameRoute(){
+        $route = new \CutePHP\Route\Router();
+
+        $route->get('/test', 123, 'Rtest');
+
+        $res = $route->name('Rtest');//从容器里面查找容器路由
+
+        //验证路由是正确
+        $this->assertEquals('/test', $res->getUri());
+        $this->assertEquals(123 , $res->getStorage());
     }
 }
