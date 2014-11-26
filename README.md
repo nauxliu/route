@@ -2,7 +2,7 @@
 在你的composer.json中添加
 ```json
 "require": {
-    "cutephp/route": "dev-master"
+    "cutephp/route": "~1.0"
 },
 ```
 
